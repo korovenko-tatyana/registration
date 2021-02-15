@@ -17,10 +17,17 @@ class Db
         $this->pdo->exec('SET NAMES UTF8');
     }
 
-    public function query(string $sql): array
+    /*public function queryy(): array
+    {
+        $sth = $this->pdo->prepare('SELECT * FROM `users`'); //подумать, что было не так с передачей параметра
+        $sth->execute();
+        return $sth->fetchAll();
+    }*/
+
+    public function query(string $sql, $params = []): array
     {
         $sth = $this->pdo->prepare($sql);
-        $result = $sth->execute();
+        $sth->execute($params);
         return $sth->fetchAll();
     }
 }

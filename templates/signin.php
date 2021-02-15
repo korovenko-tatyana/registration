@@ -27,7 +27,7 @@
             <br>
             <form action="/registration/public/register" method="post">
                 <label class="label">Nick</label>
-                <input type="text" name="nick">
+                <input type="text" name="nickname">
                 <br>
                 <label class="label">Email</label>
                 <input type="text" name="email">

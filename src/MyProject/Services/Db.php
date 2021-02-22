@@ -2,15 +2,20 @@
 
 namespace MyProject\Services;
 use PDO;
+//use Dotenv\Dotenv;
+
 
 class Db
 {
+
     private $pdo;
 
     public function __construct()
     {
+
         try {
-            $this->pdo = new \PDO('mysql:host=127.0.0.1;dbname=my_test_db', 'root', 'QWE!qwe1', array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+            $this->pdo = new \PDO('mysql:host=' .$_ENV['MYSQL_HOST_LOCAL']  . ';dbname=' . $_ENV['MYSQL_DB_NAME'], $_ENV['MYSQL_USER'], $_ENV['MYSQL_PASSWORD'], array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch(PDOException $e) {
             echo 'ERROR: ' . $e->getMessage();
         }

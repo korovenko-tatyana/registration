@@ -1,5 +1,11 @@
 <?php
 
+use Dotenv\Dotenv;
+
+require __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv::createMutable(dirname(__DIR__));
+$dotenv->load();
+
 spl_autoload_register(static function (string $className) {
     require_once dirname(__DIR__) . '/src/' . str_replace('\\', '/',$className) . '.php';
 });
@@ -10,7 +16,6 @@ require __DIR__ . '/../src/MyProject/Services/Db.php';*/
 
 $route = $_GET['route'] ?? '';
 $routes = require __DIR__ . '/../src/routes.php';
-
 
 $isRouteFound = false;
 foreach ($routes as $pattern => $controllerAndAction) {

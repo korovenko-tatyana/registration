@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e70e8ed-2103-4c83-9b5c-730a14dbec65" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyProject/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Controllers/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyProject/Models/Users/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Models/Users/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyProject/Services/Db.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Services/Db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +26,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="GitIgnore" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
@@ -52,7 +50,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613336593308</updated>
-      <workItem from="1613336594489" duration="23140000" />
+      <workItem from="1613336594489" duration="23618000" />
+      <workItem from="1613991028936" duration="9407000" />
     </task>
     <servers />
   </component>

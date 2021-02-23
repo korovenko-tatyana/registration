@@ -86,9 +86,22 @@ class User
         return 'users';
     }*/
 
-    public static function signUp(array $userData)
+    public static function signUp(array $userData):void
     {
         $db = new \MyProject\Services\Db();
         $db->query('INSERT INTO `users`(`nickname`, `email`, `password_hash`) VALUES(:nickname, :email, :password_hash)', [':nickname' => $userData['nickname'], ':email' => $userData['email'], ':password_hash' => password_hash($userData['password'],PASSWORD_DEFAULT)]);
     }
+
+    public static function findOneUser(array $userData):bool
+    {
+        $db = new \MyProject\Services\Db();
+        $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $userData['nickname']]);
+        if (!empty($result)){
+            if (password_verify($userData['password'], $result[0]["password_hash"]))
+            return true;
+        }
+        return false;
+    }
+
+
 }

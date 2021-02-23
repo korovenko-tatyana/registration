@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6e70e8ed-2103-4c83-9b5c-730a14dbec65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyProject/Controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Controllers/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyProject/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyProject/Models/Users/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Models/Users/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1613336593308</updated>
       <workItem from="1613336594489" duration="23618000" />
-      <workItem from="1613991028936" duration="11531000" />
+      <workItem from="1613991028936" duration="18386000" />
     </task>
     <servers />
   </component>

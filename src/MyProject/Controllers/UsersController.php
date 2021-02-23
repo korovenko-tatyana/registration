@@ -15,7 +15,7 @@ class UsersController
         $this->view = new View(__DIR__ . '/../../../templates');
     }
 
-    public function signUp()
+    public function signUp():void
     {
         if (!empty($_POST)) {
             \MyProject\Models\Users\User::signUp($_POST);
@@ -30,5 +30,37 @@ class UsersController
 
         //include __DIR__ . '/../../../templates/signin.php';
         $this->view->renderTemplate('signin.php');
+
+    }
+
+    public function logIn():void
+    {
+        if (!empty($_POST)) {
+            //echo \MyProject\Models\Users\User::findOneUser($_POST);
+
+            $login = $_POST['nickname'] ?? '';
+            $password = $_POST['password'] ?? '';
+            $extra = '/../registration/public';
+
+            if (\MyProject\Models\Users\User::findOneUser($_POST)) {
+                setcookie('nickname', $login, 0, '/');
+                setcookie('password', $password, 0, '/');
+                header("Location: $extra");
+            } else {
+                $error = 'Ошибка авторизации';
+            }
+        }
+        $loginFromCookie = $_COOKIE['nickname'] ?? '';
+        if ($loginFromCookie !== '') {
+            header("Location: $extra");
+        }
+        $this->view->renderTemplate('login.php');
+    }
+
+    public function logOut():void
+    {
+        setcookie('nickname', '', -10, '/');
+        setcookie('password', '', -10, '/');
+        header('Location: /registration/public');
     }
 }

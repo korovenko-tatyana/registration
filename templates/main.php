@@ -18,12 +18,12 @@
             </div>
             <nav class="nav">
                 <?php
-                $loginFromCookie = $_COOKIE['login'] ?? '';
+                $loginFromCookie = $_COOKIE['nickname'] ?? '';
                 if ($loginFromCookie === ''): ?>
-                    <!--<a class="nav__link" href="/registration/templates/login.php">Log in</a>-->
+                    <a class="nav__link" href="/registration/public/login">Log in</a>
                     <a class="nav__link" href="/registration/public/register">Sign in</a>
                 <?php else: ?>
-                    <a class="nav__link" href="/registration/templates/logout.php">Log out</a>
+                    <a class="nav__link" href="/registration/public/logout">Log out</a>
                 <?php endif; ?>
             </nav>
         </div>

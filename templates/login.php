@@ -1,25 +1,3 @@
-<?php
-if (!empty($_POST)) {
-    require __DIR__ . '/auth.php';
-
-    $login = $_POST['login'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $extra = __DIR__ . '/main.php';
-
-    if (checkAuth($login, $password)) {
-        setcookie('login', $login, 0, '/');
-        setcookie('password', $password, 0, '/');
-
-        header("Location: $extra");
-    } else {
-        $error = 'Ошибка авторизации';
-    }
-}
-$loginFromCookie = $_COOKIE['login'] ?? '';
-if ($loginFromCookie !== '') {
-    header("Location: $extra");
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,9 +23,9 @@ if ($loginFromCookie !== '') {
     <div class="container__login">
         <div class="intro__img"></div>
         <div class="form">
-            <form action="/registration/templates/login.php" method="post">
+            <form action="/registration/public/login" method="post">
                 <label class="label">Login</label>
-                <input type="text" name="login">
+                <input type="text" name="nickname">
                 <br>
                 <label class="label">Password</label>
                 <input type="password" name="password">

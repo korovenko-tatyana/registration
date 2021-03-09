@@ -6,9 +6,9 @@ class View
 {
     private $templatesPath;
 
-    public function __construct(string $templatesPath)
+    public function __construct()
     {
-        $this->templatesPath = $templatesPath;
+        $this->templatesPath = __DIR__ . '/../../../templates';
     }
 
     public function renderTemplate(string $templateName):void

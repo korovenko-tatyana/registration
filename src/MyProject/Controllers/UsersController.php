@@ -12,7 +12,7 @@ class UsersController
 
     public function __construct()
     {
-        $this->view = new View(__DIR__ . '/../../../templates');
+        $this->view = new View();
     }
 
     public function signUp():void

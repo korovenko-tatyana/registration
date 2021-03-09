@@ -18,26 +18,16 @@ class UsersController
     public function signUp():void
     {
         if (!empty($_POST)) {
-            \MyProject\Models\Users\User::signUp($_POST);
+            $user = \MyProject\Models\Users\User::signUp($_POST);
+            echo $user->getNickname();
+            //$this->view->renderTemplate('signin.php');
         }
-
-        // \MyProject\Models\Users\User::signUp($_POST);
-        //var_dump(\MyProject\Models\Users\User::findAll()); //подумать, почему var_dump внутри функции не работает
-
-        //$user_test_2 = new \MyProject\Models\Users\User('tuzik', 'tuzik@umbrellait.com', 'tuziktuziktuzik');
-        //echo ($user_test_2 -> getNickname());
-        //$user_test_2 -> save();
-
-        //include __DIR__ . '/../../../templates/signin.php';
         $this->view->renderTemplate('signin.php');
-
     }
 
     public function logIn():void
     {
         if (!empty($_POST)) {
-            //echo \MyProject\Models\Users\User::findOneUser($_POST);
-
             $login = $_POST['nickname'] ?? '';
             $password = $_POST['password'] ?? '';
             $extra = '/../registration/public';

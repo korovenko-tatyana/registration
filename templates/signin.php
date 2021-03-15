@@ -25,6 +25,8 @@
         <div class="form">
             <h2 style="color: #800032;">Регистрация</h2>
             <br>
+            <div style="color: red"><?= $errors ?></div>
+            <br>
             <form action="/registration/public/register" method="post">
                 <label class="label">Nick</label>
                 <input type="text" name="nickname">

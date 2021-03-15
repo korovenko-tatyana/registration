@@ -23,6 +23,10 @@
     <div class="container__login">
         <div class="intro__img"></div>
         <div class="form">
+            <br>
+            <div style="color: red"><?= $error ?></div>
+            <br>
+            <br>
             <form action="/registration/public/login" method="post">
                 <label class="label">Login</label>
                 <input type="text" name="nickname">
@@ -36,11 +40,5 @@
     </div>
 </div>
 </div>
-<?php if (isset($error)): ?>
-    <script>
-        let err = '<?php echo $error;?>';
-        alert(err);
-    </script>
-<?php endif; ?>
 </body>
 </html>

@@ -23,7 +23,7 @@ class View
 
     public function renderHtml(string $templateName, array $vars = []):void
     {
-       // extract($vars, EXTR_OVERWRITE);
+        extract($vars, EXTR_OVERWRITE);
 
         ob_start();
         include $this->templatesPath . '/' . $templateName;

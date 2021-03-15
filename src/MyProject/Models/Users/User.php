@@ -68,5 +68,46 @@ class User
         return false;
     }
 
-
+    public static function registrationValidation (array $userData):string
+    {
+        if (empty($userData['nickname']) && empty($userData['email']) && empty($userData['password'])) {
+            return "Fields Nick, Email and Password are empty";
+        }
+        if (empty($userData['nickname']) && empty($userData['email'])) {
+            return "Fields Nick and Email are empty";
+        }
+        if (empty($userData['nickname']) && empty($userData['password'])) {
+            return "Fields Nick and Password are empty";
+        }
+        if (empty($userData['email']) && empty($userData['password'])) {
+            return "Fields Email and Password are empty";
+        }
+        if (empty($userData['nickname'])) {
+            return "Field Nick is empty";
+        }
+        if (empty($userData['email'])) {
+            return "Field Email is empty";
+        }
+        if (empty($userData['password'])) {
+            return "Field Password is empty";
+        }
+        if (!preg_match('/^[\w\.]+@[\w]+\.[\w]+$/', $userData['email'],$matches, PREG_OFFSET_CAPTURE))
+        {
+            return "Wrong Email";
+        }
+        if (!preg_match('/^[\w\s\-]+$/', $userData['nickname'],$matches, PREG_OFFSET_CAPTURE))
+        {
+            return "Nick must consist of Latin letters, numbers, underscores and a space";
+        }
+        $db = new \MyProject\Services\Db();
+        $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $userData['nickname']]);
+        if (!empty($result)){
+            return "Nick already exists";
+        }
+        $result = $db->query('SELECT * FROM `users` WHERE email = :email;', [':email' => $userData['email']]);
+        if (!empty($result)){
+            return "Email already exists";
+        }
+        return "Yes";
+    }
 }

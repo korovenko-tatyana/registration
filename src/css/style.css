@@ -173,3 +173,8 @@ input[type=text], input[type=password]{
     outline: 0;
     outline-offset: 0;
 }
+
+/*Error message*/
+.error_message {
+    color: #800032;
+}

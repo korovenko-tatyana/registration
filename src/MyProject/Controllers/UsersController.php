@@ -18,15 +18,23 @@ class UsersController
     public function signUp():void
     {
         if (!empty($_POST)) {
-            $user = \MyProject\Models\Users\User::signUp($_POST);
-            echo $user->getNickname();
-            //$this->view->renderTemplate('signin.php');
+            //echo preg_match('/^[\w\.]+@[\w]+\.[\w]+$/', $_POST['email'],$matches, PREG_OFFSET_CAPTURE);
+            $errorAboutValidationOfRegistration = \MyProject\Models\Users\User::registrationValidation($_POST);
+            if ($errorAboutValidationOfRegistration === "Yes")
+            {
+                $user = \MyProject\Models\Users\User::signUp($_POST);
+            } else
+            {
+                $this->view->renderHtml('signin.php', ['errors' => $errorAboutValidationOfRegistration]);
+            }
+        } else {
+            $this->view->renderTemplate('signin.php');
         }
-        $this->view->renderTemplate('signin.php');
     }
 
     public function logIn():void
     {
+        //$error = false;
         if (!empty($_POST)) {
             $login = $_POST['nickname'] ?? '';
             $password = $_POST['password'] ?? '';
@@ -44,7 +52,7 @@ class UsersController
         if ($loginFromCookie !== '') {
             header("Location: $extra");
         }
-        $this->view->renderTemplate('login.php');
+        $this->view->renderHtml('login.php', ['error' => $error]);
     }
 
     public function logOut():void

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/registration/src/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Playfair+Display&family=Yusei+Magic&display=swap" rel="stylesheet">
-    <title>Eines Abends | Tests</title>
+    <title>Eines Abends | Tests - Login</title>
 </head>
 <body>
 <header class="header">
@@ -18,20 +18,26 @@
             </div>
             <nav class="nav">
                 <?php
-                $loginFromCookie = $_COOKIE['nickname'] ?? '';
-                if ($loginFromCookie === ''): ?>
-                    <a class="nav__link" href="/registration/public/login">Log in</a>
-                    <a class="nav__link" href="/registration/public/register">Sign in</a>
-                <?php else: ?>
+                $loginFromCookie = $_COOKIE['nickname'] ?? '';?>
                     <a class="nav__link" href="/registration/public/profile">Hi, <span class="nick__weight"><?= $loginFromCookie?></span>!</a>
                     <a class="nav__link" href="/registration/public/logout">Log out</a>
-                <?php endif; ?>
             </nav>
         </div>
     </div>
 </header>
-<div class="intro">
-    <div class="container"></div>
+<div class="intro__login">
+    <div class="intro__img"></div>
+    <div class="user__info">
+        <div class="account">Account</div>
+        <br>
+        <div class="user__nick_profile"><?= $_COOKIE['nickname']?></div>
+        <br>
+        <div class="user__info__email__days"><?= $emailUser ?></div>
+        <div class="user__info__email__days"><?= $dayOfUser?> days</div>
+        <br>
+        <input class="button_settings" type="submit" value="Settings">
+    </div>
+</div>
 </div>
 </body>
 </html>

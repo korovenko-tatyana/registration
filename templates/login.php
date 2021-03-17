@@ -20,7 +20,6 @@
     </div>
 </header>
 <div class="intro__login">
-    <div class="container__login">
         <div class="intro__img"></div>
         <div class="form">
             <br>
@@ -37,7 +36,6 @@
                 <input class="btn__login" type="submit" value="Log in">
             </form>
         </div>
-    </div>
 </div>
 </div>
 </body>

@@ -68,6 +68,17 @@ class User
         return false;
     }
 
+    public static function profileInfo(string $nickname, &$profileEmail, &$profileData ):void
+    {
+        $db = new \MyProject\Services\Db();
+        $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $nickname]);
+        if (!empty($result)){
+            //$profileNick = $result[0]["nickname"];
+            $profileEmail = $result[0]["email"];
+            $profileData = $result[0]["created_at"];
+        }
+    }
+
     public static function registrationValidation (array $userData):string
     {
         if (empty($userData['nickname']) && empty($userData['email']) && empty($userData['password'])) {

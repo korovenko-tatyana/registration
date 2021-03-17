@@ -5,9 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyProject/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Controllers/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyProject/Models/Users/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/Models/Users/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyProject/View/View.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyProject/View/View.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +71,8 @@
       <workItem from="1613991028936" duration="19282000" />
       <workItem from="1614619682195" duration="8000" />
       <workItem from="1614633153664" duration="4230000" />
-      <workItem from="1615248682723" duration="16858000" />
+      <workItem from="1615248682723" duration="17053000" />
+      <workItem from="1615911159242" duration="11338000" />
     </task>
     <servers />
   </component>

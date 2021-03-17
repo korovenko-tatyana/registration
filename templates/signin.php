@@ -20,7 +20,6 @@
     </div>
 </header>
 <div class="intro__login">
-    <div class="container__login">
         <div class="intro__img"></div>
         <div class="form">
             <h2 style="color: #800032;">Регистрация</h2>
@@ -40,14 +39,7 @@
                 <input class="btn__login" type="submit" value="Sign in">
             </form>
         </div>
-    </div>
 </div>
 </div>
-<?php if (isset($error)): ?>
-    <script>
-        let err = '<?php echo $error;?>';
-        alert(err);
-    </script>
-<?php endif; ?>
 </body>
 </html>

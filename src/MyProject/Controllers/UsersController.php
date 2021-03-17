@@ -27,7 +27,7 @@ class UsersController
                 setcookie('nickname', $login, 0, '/');
                 setcookie('password', $password, 0, '/');
                 //$this->view->renderTemplate('main.php');
-                header("Location: /../registration/public");
+                header("Location: /registration/public");
             } else
             {
                 $this->view->renderHtml('signin.php', ['errors' => $errorAboutValidationOfRegistration]);
@@ -36,7 +36,7 @@ class UsersController
             $this->view->renderTemplate('signin.php');
         }
         if ($_COOKIE['nickname']) {
-            header("Location: /../registration/public");
+            header("Location: /registration/public");
         }
     }
 
@@ -46,19 +46,19 @@ class UsersController
         if (!empty($_POST)) {
             $login = $_POST['nickname'] ?? '';
             $password = $_POST['password'] ?? '';
-            $extra = '/../registration/public';
 
             if (\MyProject\Models\Users\User::findOneUser($_POST)) {
                 setcookie('nickname', $login, 0, '/');
                 setcookie('password', $password, 0, '/');
-                header("Location: $extra");
+                header('Location: /registration/public');
             } else {
                 $error = 'Ошибка авторизации';
             }
         }
         $loginFromCookie = $_COOKIE['nickname'] ?? '';
         if ($loginFromCookie !== '') {
-            header("Location: /../registration/public");
+            header('Location: /registration/public');
+
         }
         $this->view->renderHtml('login.php', ['error' => $error]);
     }
@@ -73,7 +73,7 @@ class UsersController
     public function profileInfo():void
     {
         if (!$_COOKIE['nickname']) {
-            header("Location: /../registration/public");
+            header("Location: /registration/public");
         }
         \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData);
         if (!empty($_POST['deleteUser'])) {

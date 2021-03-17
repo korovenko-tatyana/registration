@@ -79,6 +79,14 @@ class User
         }
     }
 
+    public static function deleteUser(string $nickname) {
+        $db = new \MyProject\Services\Db();
+        $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $nickname]);
+        if (!empty($result)) {
+            $db->query('DELETE FROM `users` WHERE nickname = :nickname;', [':nickname' => $nickname]);
+        }
+    }
+
     public static function registrationValidation (array $userData):string
     {
         if (empty($userData['nickname']) && empty($userData['email']) && empty($userData['password'])) {

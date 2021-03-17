@@ -72,7 +72,21 @@ class UsersController
 
     public function profileInfo():void
     {
+        if (!$_COOKIE['nickname']) {
+            header("Location: /../registration/public");
+        }
         \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData);
-        $this->view->renderHtml('profile.php', ['emailUser' => $profileEmail, 'dayOfUser' => ceil((time()-strtotime($profileData))/60/60/24)]);
+        if (!empty($_POST['deleteUser'])) {
+            $sure = 'Are you sure you want to delete your account?';
+            $this->view->renderHtml('profile.php', ['sureButton' => $sure, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time()-strtotime($profileData))/60/60/24)]);
+        } elseif (!empty($_POST['yesDeleteUser'])) {
+            \MyProject\Models\Users\User::deleteUser($_COOKIE['nickname']);
+            setcookie('nickname', '', -10, '/');
+            setcookie('password', '', -10, '/');
+            header('Location: /registration/public');
+        }else {
+            //\MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData);
+            $this->view->renderHtml('profile.php', ['emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24)]);
+        }
     }
 }

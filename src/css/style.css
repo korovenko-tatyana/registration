@@ -249,3 +249,18 @@ input[type=text], input[type=password]{
     color: #800032;
     border: 1px solid #800032;
 }
+
+.button_yesno {
+    display:inline-block;
+    margin-right:5px;
+    color: #800032;
+    cursor: pointer;
+    font-size: 15px;
+    border: 1px solid #a00032;
+    border-radius: 4px;
+}
+.button_yesno:hover {
+    background-color: #f3e1e3;
+    color: #800032;
+    border: 1px solid #800032;
+}

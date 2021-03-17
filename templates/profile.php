@@ -35,7 +35,18 @@
         <div class="user__info__email__days"><?= $emailUser ?></div>
         <div class="user__info__email__days"><?= $dayOfUser?> days</div>
         <br>
-        <input class="button_settings" type="submit" value="Settings">
+        <form action="/registration/public/profile" method="post">
+        <input class="button_settings" type="submit" name="deleteUser" value="Delete account">
+        </form>
+        <?php
+        if ($sureButton): ?>
+        <div class="user__nick_profile"><?= $sureButton?></div>
+        <br>
+        <form action="/registration/public/profile" method="post">
+            <input class="button_yesno" type="submit" name="yesDeleteUser" value="Yes">
+            <input class="button_yesno" type="submit" name="noDeleteUser" value="No">
+        </form>
+        <?php endif; ?>
     </div>
 </div>
 </div>

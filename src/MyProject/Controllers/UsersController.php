@@ -75,18 +75,43 @@ class UsersController
         if (!$_COOKIE['nickname']) {
             header("Location: /registration/public");
         }
-        \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData);
-        if (!empty($_POST['deleteUser'])) {
-            $sure = 'Are you sure you want to delete your account?';
-            $this->view->renderHtml('profile.php', ['sureButton' => $sure, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time()-strtotime($profileData))/60/60/24)]);
-        } elseif (!empty($_POST['yesDeleteUser'])) {
+        \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData,$profileAvatar);
+      //  \MyProject\Models\Users\User::addAvatarDafault('on this place was base64 image');
+        $this->view->renderHtml('profile.php', ['emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24), 'userAvatar' => $profileAvatar]);
+    }
+
+    public function profileSettings():void
+    {
+        if (!$_COOKIE['nickname']) {
+            header("Location: /registration/public");
+        }
+        \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData,$profileAvatar);
+
+        $imgg = 'hoho';
+       /* if (!empty($_FILES["myimage"]["name"])) {
+            $imgg = \MyProject\Models\Users\User::changeAvatar();
+        $imagetmp = addslashes(file_get_contents($_FILES["myimage"]["tmp_name"]));*/
+       // echo base64_encode(file_get_contents($_FILES["myimage"]["tmp_name"]));
+
+
+        if (!empty($_POST['yesDeleteUser'])) {
             \MyProject\Models\Users\User::deleteUser($_COOKIE['nickname']);
             setcookie('nickname', '', -10, '/');
             setcookie('password', '', -10, '/');
             header('Location: /registration/public');
-        }else {
-            //\MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData);
-            $this->view->renderHtml('profile.php', ['emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24)]);
         }
+        /*else {
+            //\MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData);
+            $this->view->renderHtml('settings.php', ['emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24)]);
+        }*/
+
+        $this->view->renderHtml('settings.php', ['img' => $imgg, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24),'userAvatar' => $profileAvatar]);
+
+        // $this->view->renderHtml('settings.php', ['img' => $imgg, 'sureButton' => $sure, 'upload' => $upload, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time()-strtotime($profileData))/60/60/24)]);
+
+       // if (!empty($_POST['changeUserAvatar'])) {
+        //    $upload = 'Upload';
+       //     $this->view->renderHtml('settings.php', ['upload' => $upload, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time()-strtotime($profileData))/60/60/24)]);
+       // }
     }
 }

@@ -30,24 +30,21 @@
     <div class="user__info">
         <div class="account">Account</div>
         <br>
+        <a class = "user__avatar__container" href="/registration/public/profile/settings">
+        <img width="90" height="90" alt="" src="data:image/jpeg;base64,<?= $userAvatar?>">
+        </a>
+        <br>
         <div class="user__nick_profile"><?= $_COOKIE['nickname']?></div>
         <br>
         <div class="user__info__email__days"><?= $emailUser ?></div>
         <div class="user__info__email__days"><?= $dayOfUser?> days</div>
         <br>
-        <form action="/registration/public/profile" method="post">
-        <input class="button_settings" type="submit" name="deleteUser" value="Delete account">
+
+        <form action="/registration/public/profile/settings" method="post">
+            <input class="button_settings " type="submit" name="settingsUser" value="Settings">
         </form>
-        <?php
-        if ($sureButton): ?>
-        <div class="user__nick_profile"><?= $sureButton?></div>
-        <br>
-        <form action="/registration/public/profile" method="post">
-            <input class="button_yesno" type="submit" name="yesDeleteUser" value="Yes">
-            <input class="button_yesno" type="submit" name="noDeleteUser" value="No">
-        </form>
-        <?php endif; ?>
-    </div>
+        
+        </div>
 </div>
 </div>
 </body>

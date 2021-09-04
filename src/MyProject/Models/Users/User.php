@@ -9,6 +9,7 @@ class User
     private $nickname;
     private $email;
     private $passwordHash;
+    private $avatar;
     //private $createdAt;
 
     public function __construct(string $nickname, string $email, string $passwordHash)
@@ -49,6 +50,16 @@ class User
         return $this->passwordHash;
     }
 
+    public function setAvatar(string $avatar)
+    {
+        $this->avatar = $avatar;
+    }
+
+    public function getAvatar(): string
+    {
+        return $this->avatar;
+    }
+
     public static function signUp(array $userData):User
     {
         $user = new User($userData['nickname'],$userData['email'],password_hash($userData['password'],PASSWORD_DEFAULT));
@@ -68,7 +79,7 @@ class User
         return false;
     }
 
-    public static function profileInfo(string $nickname, &$profileEmail, &$profileData ):void
+    public static function profileInfo(string $nickname, &$profileEmail, &$profileData, &$profileAvatar ):void
     {
         $db = new \MyProject\Services\Db();
         $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $nickname]);
@@ -76,6 +87,7 @@ class User
             //$profileNick = $result[0]["nickname"];
             $profileEmail = $result[0]["email"];
             $profileData = $result[0]["created_at"];
+            $profileAvatar = $result[0]["user_avatar"];
         }
     }
 
@@ -129,4 +141,20 @@ class User
         }
         return "Yes";
     }
+
+    public static function changeAvatar ():string {
+        $imagename = $_FILES["myimage"]["name"];
+        $imagetmp = addslashes(file_get_contents($_FILES["myimage"]["tmp_name"]));
+        return $imagename;
+    }
+
+    //if you need to add new column to db with values. On this function addAvatarDafault: I add default avatar to all users on db. This function I use only one time, because to new users I change function signUp
+   
+    /* public static function addAvatarDafault(string $user_dafault_avatar)
+    {
+        //$user = new User($userData['nickname'],$userData['email'],password_hash($userData['password'],PASSWORD_DEFAULT));
+        $db = new \MyProject\Services\Db();
+        $db->query('UPDATE `users` SET `user_avatar`= :user_dafault_avatar', [':user_dafault_avatar' => $user_dafault_avatar]);
+        //return $user;
+    }*/
 }

@@ -87,31 +87,17 @@ class UsersController
         }
         \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData,$profileAvatar);
 
-        $imgg = 'hoho';
-       /* if (!empty($_FILES["myimage"]["name"])) {
-            $imgg = \MyProject\Models\Users\User::changeAvatar();
-        $imagetmp = addslashes(file_get_contents($_FILES["myimage"]["tmp_name"]));*/
-       // echo base64_encode(file_get_contents($_FILES["myimage"]["tmp_name"]));
-
-
+        if (!empty($_FILES["myimage"]["name"])) {
+            \MyProject\Models\Users\User::changeAvatar($_COOKIE['nickname'], $_FILES["myimage"]["tmp_name"]);
+            \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData,$profileAvatar);
+        }
+       
         if (!empty($_POST['yesDeleteUser'])) {
             \MyProject\Models\Users\User::deleteUser($_COOKIE['nickname']);
             setcookie('nickname', '', -10, '/');
             setcookie('password', '', -10, '/');
             header('Location: /registration/public');
         }
-        /*else {
-            //\MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData);
-            $this->view->renderHtml('settings.php', ['emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24)]);
-        }*/
-
         $this->view->renderHtml('settings.php', ['img' => $imgg, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24),'userAvatar' => $profileAvatar]);
-
-        // $this->view->renderHtml('settings.php', ['img' => $imgg, 'sureButton' => $sure, 'upload' => $upload, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time()-strtotime($profileData))/60/60/24)]);
-
-       // if (!empty($_POST['changeUserAvatar'])) {
-        //    $upload = 'Upload';
-       //     $this->view->renderHtml('settings.php', ['upload' => $upload, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time()-strtotime($profileData))/60/60/24)]);
-       // }
     }
 }

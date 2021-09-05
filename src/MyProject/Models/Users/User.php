@@ -64,7 +64,8 @@ class User
     {
         $user = new User($userData['nickname'],$userData['email'],password_hash($userData['password'],PASSWORD_DEFAULT));
         $db = new \MyProject\Services\Db();
-        $db->query('INSERT INTO `users`(`nickname`, `email`, `password_hash`) VALUES(:nickname, :email, :password_hash)', [':nickname' => $userData['nickname'], ':email' => $userData['email'], ':password_hash' => password_hash($userData['password'],PASSWORD_DEFAULT)]);
+        $default_user_avatar = base64_encode(file_get_contents('../src/css/images/avatar_user.jpeg', FILE_USE_INCLUDE_PATH));
+        $db->query('INSERT INTO `users`(`nickname`, `email`, `password_hash`, `user_avatar`) VALUES(:nickname, :email, :password_hash, :user_avatar)', [':nickname' => $userData['nickname'], ':email' => $userData['email'], ':password_hash' => password_hash($userData['password'],PASSWORD_DEFAULT), ':user_avatar' => $default_user_avatar]);
         return $user;
     }
 
@@ -142,10 +143,13 @@ class User
         return "Yes";
     }
 
-    public static function changeAvatar ():string {
-        $imagename = $_FILES["myimage"]["name"];
-        $imagetmp = addslashes(file_get_contents($_FILES["myimage"]["tmp_name"]));
-        return $imagename;
+    public static function changeAvatar (string $nickname, string $name_of_img) {
+        $db = new \MyProject\Services\Db();
+        $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $nickname]);
+        if (!empty($result)){
+            $new_user_avatar = base64_encode(file_get_contents($name_of_img));
+            $db->query('UPDATE `users` SET `user_avatar`= :new_user_avatar', [':new_user_avatar' => $new_user_avatar]);
+        }
     }
 
     //if you need to add new column to db with values. On this function addAvatarDafault: I add default avatar to all users on db. This function I use only one time, because to new users I change function signUp

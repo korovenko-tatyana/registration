@@ -48,27 +48,7 @@
         <form action="/registration/public/profile/settings" method="post" enctype="multipart/form-data">
             <input class="avatar_button file_button not_vis_text" type="file" name="myimage">
             <input class="avatar_button upload_button not_vis_text" type="submit" name="submit_image" value="Upload">
-        </form>
-
-             <div class="user__nick_profile"><?= $_FILES["myimage"]["name"]?></div>
-        <!--  <div class="user__nick_profile">< ?= base64_encode(file_get_contents($_FILES["myimage"]["name"]))?></div> -->
-       <!-- <div class="user__nick_profile">< ?= $img?></div> -->
-
-        <?php
-        $text = "Какой-то текст";
-        $fp = fopen("file.jpeg", "w");
-        file_put_contents($fp, base64_encode(file_get_contents($_FILES["myimage"]["name"])));
-        ?>
-
-       <!-- <img width="795" height="960" alt="" src="data:image/jpeg;base64,< ?= base64_encode(file_get_contents($_FILES["myimage"]["tmp_name"]))?>"> -->
-
-
-
-
-
-
-
-
+        </form>      
     </div>
 </div>
 </div>

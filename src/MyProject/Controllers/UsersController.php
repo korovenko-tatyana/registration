@@ -70,6 +70,13 @@ class UsersController
         header('Location: /registration/public');
     }
 
+    public function profileInfo(string $userName):void
+    {
+        \MyProject\Models\Users\User::profileInfo($userName, $profileEmail,$profileData,$profileAvatar);
+        $this->view->renderHtml('profile.php', ['userNickname' => $userName,'emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24), 'userAvatar' => $profileAvatar]);
+    }
+
+   /*
     public function profileInfo():void
     {
         if (!$_COOKIE['nickname']) {
@@ -78,7 +85,7 @@ class UsersController
         \MyProject\Models\Users\User::profileInfo($_COOKIE['nickname'],$profileEmail,$profileData,$profileAvatar);
       //  \MyProject\Models\Users\User::addAvatarDafault('on this place was base64 image');
         $this->view->renderHtml('profile.php', ['emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24), 'userAvatar' => $profileAvatar]);
-    }
+    }*/
 
     public function profileSettings():void
     {

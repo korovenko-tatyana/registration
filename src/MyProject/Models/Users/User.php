@@ -91,7 +91,21 @@ class User
             $profileAvatar = $result[0]["user_avatar"];
         }
     }
+//info about user using Id (not using nickname)
 
+/*
+    public static function profileInfoId(int $userId, &$profileNickname, &$profileEmail, &$profileData, &$profileAvatar ):void
+    {
+        $db = new \MyProject\Services\Db();
+        $result = $db->query('SELECT * FROM `users` WHERE id = :id;', [':id' => $userId]);
+        if (!empty($result)){
+            $profileNickname = $result[0]["nickname"];
+            $profileEmail = $result[0]["email"];
+            $profileData = $result[0]["created_at"];
+            $profileAvatar = $result[0]["user_avatar"];
+        }
+    }
+*/
     public static function deleteUser(string $nickname) {
         $db = new \MyProject\Services\Db();
         $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $nickname]);
@@ -148,7 +162,7 @@ class User
         $result = $db->query('SELECT * FROM `users` WHERE nickname = :nickname;', [':nickname' => $nickname]);
         if (!empty($result)){
             $new_user_avatar = base64_encode(file_get_contents($name_of_img));
-            $db->query('UPDATE `users` SET `user_avatar`= :new_user_avatar', [':new_user_avatar' => $new_user_avatar]);
+            $db->query('UPDATE `users` SET `user_avatar`= :new_user_avatar WHERE nickname = :nickname;', [':new_user_avatar' => $new_user_avatar, ':nickname' => $nickname]);
         }
     }
 

@@ -17,10 +17,15 @@
                 </a>
             </div>
             <nav class="nav">
-                <?php
-                $loginFromCookie = $_COOKIE['nickname'] ?? '';?>
-                <a class="nav__link" href="/registration/public/profile">Hi, <span class="nick__weight"><?= $loginFromCookie?></span>!</a>
-                <a class="nav__link" href="/registration/public/logout">Log out</a>
+            <?php
+                $loginFromCookie = $_COOKIE['nickname'] ?? '';
+                if ($loginFromCookie === ''): ?>
+                    <a class="nav__link" href="/registration/public/login">Log in</a>
+                    <a class="nav__link" href="/registration/public/register">Sign in</a>
+                <?php else: ?>
+                    <a class="nav__link" href="/registration/public/profile/<?= $loginFromCookie?>">Hi, <span class="nick__weight"><?= $loginFromCookie?></span>!</a>
+                    <a class="nav__link" href="/registration/public/logout">Log out</a>
+                <?php endif; ?>
             </nav>
         </div>
     </div>
@@ -48,7 +53,7 @@
         <form action="/registration/public/profile/settings" method="post" enctype="multipart/form-data">
             <input class="avatar_button file_button not_vis_text" type="file" name="myimage">
             <input class="avatar_button upload_button not_vis_text" type="submit" name="submit_image" value="Upload">
-        </form>      
+        </form>   
     </div>
 </div>
 </div>

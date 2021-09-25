@@ -18,9 +18,14 @@
             </div>
             <nav class="nav">
                 <?php
-                $loginFromCookie = $_COOKIE['nickname'] ?? '';?>
-                    <a class="nav__link" href="/registration/public/profile">Hi, <span class="nick__weight"><?= $loginFromCookie?></span>!</a>
+                $loginFromCookie = $_COOKIE['nickname'] ?? '';
+                if ($loginFromCookie === ''): ?>
+                    <a class="nav__link" href="/registration/public/login">Log in</a>
+                    <a class="nav__link" href="/registration/public/register">Sign in</a>
+                <?php else: ?>
+                    <a class="nav__link" href="/registration/public/profile/<?= $loginFromCookie?>">Hi, <span class="nick__weight"><?= $loginFromCookie?></span>!</a>
                     <a class="nav__link" href="/registration/public/logout">Log out</a>
+                <?php endif; ?>
             </nav>
         </div>
     </div>
@@ -30,20 +35,21 @@
     <div class="user__info">
         <div class="account">Account</div>
         <br>
+        <div class="user__nick_profile"><?= $userNickname?></div>
+        <br>
         <a class = "user__avatar__container" href="/registration/public/profile/settings">
         <img width="90" height="90" alt="" src="data:image/jpeg;base64,<?= $userAvatar?>">
         </a>
-        <br>
-        <div class="user__nick_profile"><?= $_COOKIE['nickname']?></div>
         <br>
         <div class="user__info__email__days"><?= $emailUser ?></div>
         <div class="user__info__email__days"><?= $dayOfUser?> days</div>
         <br>
 
+        <?php if ($_COOKIE['nickname'] === $userNickname): ?>
         <form action="/registration/public/profile/settings" method="post">
             <input class="button_settings " type="submit" name="settingsUser" value="Settings">
         </form>
-        
+        <?php endif; ?>
         </div>
 </div>
 </div>

@@ -185,6 +185,8 @@ input[type=text], input[type=password]{
     color: #383838;
 }
 
+
+
 /*user info*/
 .user__info {
     color: #000;
@@ -269,6 +271,28 @@ input[type=text], input[type=password]{
     border: 1px solid #800032;
 }
 
+/*list of user*/
+.widget{
+    padding: 120px;
+    background-color: #d9bab9;
+}
+
+.widget__container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 16em;
+    text-align: center;
+}
+.widget-list{
+    padding: 0;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center__class{
+    text-align: center;
+}
 
 /*js */
 .not_vis_text {

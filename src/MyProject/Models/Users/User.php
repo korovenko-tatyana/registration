@@ -80,6 +80,12 @@ class User
         return false;
     }
 
+    public static function findAllUsers(): array
+    {
+        $db = new \MyProject\Services\Db();
+        return $db->query('SELECT * FROM `users`;', [], User::class);
+    }
+
     public static function profileInfo(string $nickname, &$profileEmail, &$profileData, &$profileAvatar ):void
     {
         $db = new \MyProject\Services\Db();

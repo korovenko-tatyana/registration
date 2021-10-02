@@ -22,9 +22,11 @@
                 if ($loginFromCookie === ''): ?>
                     <a class="nav__link" href="/registration/public/login">Log in</a>
                     <a class="nav__link" href="/registration/public/register">Sign in</a>
+                    <a class="nav__link" href="/registration/public/users">All users</a>
                 <?php else: ?>
                     <a class="nav__link" href="/registration/public/profile/<?= $loginFromCookie?>">Hi, <span class="nick__weight"><?= $loginFromCookie?></span>!</a>
                     <a class="nav__link" href="/registration/public/logout">Log out</a>
+                    <a class="nav__link" href="/registration/public/users">All users</a>
                 <?php endif; ?>
             </nav>
         </div>

@@ -32,31 +32,14 @@
         </div>
     </div>
 </header>
-<div class="intro__login">
-    <div class="intro__img"></div>
-    <div class="user__info">
-        <div class="account">Account</div>
-        <br>
-        <div class="user__nick_profile"><?= $userNickname?></div>
-        <br>
-        <a class = "user__avatar__container" href="/registration/public/profile/settings">
-        <img width="90" height="90" alt="" src="data:image/jpeg;base64,<?= $userAvatar?>">
-        </a>
-        <br>
-        <div class="user__info__email__days"><?= $emailUser ?></div>
-        <?php
-        if ($dayOfUser == 1): ?>
-        <div class="user__info__email__days">1 day</div>
-        <?php else: ?>
-        <div class="user__info__email__days"><?= $dayOfUser?> days</div>
-        <?php endif; ?>
-        <br>
-        <?php if ($_COOKIE['nickname'] === $userNickname): ?>
-        <form action="/registration/public/profile/settings" method="post">
-            <input class="button_settings " type="submit" name="settingsUser" value="Settings">
-        </form>
-        <?php endif; ?>
-        </div>
+<div class="widget">
+    <div class="widget__container">
+        <h3 class="account center__class">Users</h3>
+        <ul class="widget-list">
+            <?php foreach ($users as $user): ?>
+            <li><a class="nav__link" href="/registration/public/profile/<?= $user['nickname']?>"><?= $user['nickname'] ?></a></li>   
+<?php endforeach; ?>
+</ul>
 </div>
 </div>
 </body>

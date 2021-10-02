@@ -73,7 +73,13 @@ class UsersController
     public function profileInfo(string $userName):void
     {
         \MyProject\Models\Users\User::profileInfo($userName, $profileEmail,$profileData,$profileAvatar);
-        $this->view->renderHtml('profile.php', ['userNickname' => $userName,'emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24), 'userAvatar' => $profileAvatar]);
+        $this->view->renderHtml('profile.php', ['userNickname' => $userName,'emailUser' => $profileEmail, 'dayOfUser' => ceil((time() + 60 * 60 * 3 - strtotime($profileData)) / 60 / 60 / 24), 'userAvatar' => $profileAvatar]);
+    }
+
+    public function listOfUsers():void
+    {
+        $users = \MyProject\Models\Users\User::findAllUsers();
+        $this->view->renderHtml('users.php', ['users' => $users]);
     }
 
    /*
@@ -105,6 +111,6 @@ class UsersController
             setcookie('password', '', -10, '/');
             header('Location: /registration/public');
         }
-        $this->view->renderHtml('settings.php', ['img' => $imgg, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time() - strtotime($profileData)) / 60 / 60 / 24),'userAvatar' => $profileAvatar]);
+        $this->view->renderHtml('settings.php', ['img' => $imgg, 'emailUser' => $profileEmail, 'dayOfUser' => ceil((time() + 60 * 60 * 3 - strtotime($profileData)) / 60 / 60 / 24),'userAvatar' => $profileAvatar]);
     }
 }
